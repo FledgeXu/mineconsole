@@ -1,4 +1,5 @@
 build:
-	go build -o out/mineconsole ./**/*.go
+	mkdir -p out
+	go build -o out ./...
 clean:
-	rm -rf out
+	rm -rf out cache
