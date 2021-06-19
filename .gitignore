@@ -18,3 +18,8 @@
 ### Go Patch ###
 /vendor/
 /Godeps/
+
+# Ignore runtime cache.
+cache/
+# Ignore build output.
+out/
