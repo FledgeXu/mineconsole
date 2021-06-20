@@ -6,12 +6,13 @@ import (
 	"os/signal"
 	"syscall"
 
+	"github.com/fledgexu/mineconsole/config"
 	"github.com/fledgexu/mineconsole/daemon"
 	"github.com/spf13/viper"
 )
 
 func main() {
-	InitConfig()
+	config.InitConfig()
 	fmt.Println(viper.GetInt("api_port"))
 	go daemon.InitDaemon()
 	// wait for a SIGINT or SIGTERM signal

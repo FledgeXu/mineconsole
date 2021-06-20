@@ -1,6 +1,7 @@
 package daemon
 
 import (
+	"context"
 	"fmt"
 	"log"
 	"net/http"
@@ -14,6 +15,9 @@ func handleGetGameVersions(w http.ResponseWriter, r *http.Request) {
 }
 
 func InitDaemon() {
+	ipfsCtx, ipfsCtxCancel := context.WithCancel(context.Background())
+	defer ipfsCtxCancel()
+	InitIPFSNode(ipfsCtx)
 	http.HandleFunc("/game/versions", handleGetGameVersions)
 	log.Fatal(
 		http.ListenAndServe(
